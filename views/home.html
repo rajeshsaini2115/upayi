@@ -2,69 +2,76 @@
 <html lang="en">
 
 <head>
-    <!-- Coded by Sumanjay @cyberboysumanjay on 5th August 2020 -->
-
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Meta Tags -->
-    <meta name="author" content="Sumanjay">
-    <meta name="description" content="Create Payment Link of your UPI ID!">
-    <link rel="icon" href="https://telegra.ph/file/2f094c81af60c83f28f84.png" type="image/png" />
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
-    <title>UPI Link</title>
-
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174919510-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-174919510-1');
-    </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="Tuhin Kanti Pal">
+    <title>Create | Upier</title>
+    <meta name="description" content="Shareable Payment's Link for UPI">
+    <meta name="keywords" content="UPI, Shareable UPI Link, Upi Shareable Link , Share UPI Payment's Link, Free Shareable UPI Link, UPI Payment">
+    <link href="https://fonts.googleapis.com/css?family=Poppins|Krona+One" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@900&display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="img/favicon.ico">
 </head>
 
-<body>
-
-    <div class="card">
-        <div class="banner">
-            <img height=360px; src="{{ qr }}">
-        </div>
-        {% if amount %}
-        <h2 class="name animate__animated animate__tada">Paying {{ amount }}₹ to {{ id }}</h2>
-        {% else %}
-        <h2 class="name animate__animated animate__tada">Paying to {{ id }}</h2>
-        {% endif %}
-        <div class="title">Secure and instant payments powered by
-            <br><br>
-            <img height="36px" src="https://telegra.ph/file/03c4581ebd2a0e21972de.png">
-            <img height="36px" src="https://telegra.ph/file/e290ab4d1dbf1ae1dab10.png">
-
-        </div>
-
-        <div class="actions">
-            <div class="pay-btn">
-                {% if amount %}
-                <a href="upi://pay?pn=UPAYI&pa={{ id }}&cu=INR&am={{ amount }}"> <button>Pay Now</button></a>
-                {% else %}
-                <a href="upi://pay?pn=UPAYI&pa={{ id }}&cu=INR"> <button>Pay Now</button></a>
-                {% endif %}
-                <br><br>
-                <a href="/"> <button>Create your UPI Link</button></a>
-                <br>
+<body onload="hideF()">
+    <div id="header" class="headerdiv">
+        <h1 class="heading">
+            Create
+        </h1>
+        <img src="img/share.svg" class="shareicon" width="32" height="36" onclick="share();">
+    </div>
+    <div id="content" class="contentdiv">
+        <h1 class="headingw">
+            Create Shareable Link for UPI Payment
+        </h1>
+        <div id="inputd" class="inputdiv">
+            <div class="center">
+                <p class="pdetailupiid">
+                    Enter Your VPA (UPI ID)
+                </p>
+                <input type="text" id="vpa" placeholder="UPI ID" class="inputbox">
+            </div>
+            <div class="amountdiv">
+                <p class="pdetailamount">
+                    Amount = <input type="number" id="amount" placeholder="₹" class="amountbox"> ₹
+                </p>
+                <p class="vsmalltext">
+                    (Optional)
+                </p>
+            </div>
+            <div class="center">
+                <a onclick="genLink();" class="createb">C R E A T E</a>
+                <p id="invalid" class="invalidtext">
+                    * Invalid VPA
+                </p>
             </div>
         </div>
-
-        <div class="desc link"> <a href="https://github.com/cyberboysumanjay">Made with <span class="love">❤️</span> by Sumanjay</a></div>
-
+        <div id="outputd" class="outputdiv">
+            <p class="paymentlinktxt">
+                Send this link to Recieve Payment
+            </p>
+            <div class="center">
+                <input type="text" id="outlink" readonly="true" class="inputbox">
+                <p id="copiedtext" class="copiedtxt">
+                    Copied.
+                </p>
+                <a onclick="copyLink();" class="createb">C O P Y</a>
+            </div>
+        </div>
+        <div>
+            <p class="smalltext">
+                If you have any Question about security or privacy, Check our<br><a href="/tos">T O S</a>. Also you can check this <a href="https://t.me/rajeshsaini2115">Rajesh Saini</a> to know how this system works.
+            </p>
+            <p class="gocless"># Go Cashless</p>
+            <p class="india">Made in 🇮🇳 for 🇮🇳</p>
+        </div>
+        
     </div>
-
 </body>
+<script src="js/main.js"></script>
 
 </html>
+<!--Made by Tuhin. Send Mail to me[at]mailtuhin[dot]ml for contact.-->
+<!--upier.org is the official domain for github.com/cachecleanerjeet/Upier-->
